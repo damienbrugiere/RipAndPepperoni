@@ -19,10 +19,39 @@ exports.config = {
     defaultTimeoutInterval: 30000,
     print: function() {}
   },
+  
   onPrepare() {
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'
     });
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+    var jasmineReporters = require('jasmine-reporters');
+    jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
+        consolidateAll: true,
+        savePath: './',
+        filePrefix: 'xmlresults'
+    }));
+  },
+  onComplete(){
+    var browserName, browserVersion;
+    var capsPromise = browser.getCapabilities();
+
+    capsPromise.then(function (caps) {
+       browserName = caps.get('browserName');
+       browserVersion = caps.get('version');
+
+       var HTMLReport = require('protractor-html-reporter');
+
+       testConfig = {
+           reportTitle: 'Test Execution Report',
+           outputPath: './',
+           screenshotPath: './screenshots',
+           testBrowser: browserName,
+           browserVersion: browserVersion,
+           modifiedSuiteName: false,
+           screenshotsOnlyOnFailure: true
+       };
+       new HTMLReport().from('xmlresults.xml', testConfig);
+      });
   }
 };

@@ -1,0 +1,31 @@
+
+<div style="background-color:#2f3543; padding: 10px 10px 10px 10px;border-radius:10px;">
+<img class="btn-md float-left" [src]="perso.icon | safe" height="100px" width="100px" alt="" >
+<div style="margin-left:80px;">
+  <div class="text-left titleName text-center">{{perso.name}}</div> 
+  <div class="text-center">
+    <img  *ngIf="perso.cote < 1500" src="https://vignette.wikia.nocookie.net/overwatch/images/8/8f/Competitive_Bronze_Icon.png/revision/latest?cb=20161122023401" alt="" height="50px" width="50px">
+    <img  *ngIf="perso.cote < 2000 && perso.cote >=1500" src="https://vignette.wikia.nocookie.net/overwatch/images/f/fe/Competitive_Silver_Icon.png/revision/latest?cb=20161122023740" alt=""   height="50px" width="50px">
+    <img  *ngIf="perso.cote < 2500 && perso.cote >=2000" src="https://vignette.wikia.nocookie.net/overwatch/images/4/44/Competitive_Gold_Icon.png/revision/latest?cb=20161122023755" alt="gold"   height="50px" width="50px">
+    <img  *ngIf="perso.cote < 3000 && perso.cote >=2500" src="https://vignette.wikia.nocookie.net/overwatch/images/e/e4/Competitive_Platinum_Icon.png/revision/latest?cb=20161122023807  " alt=""   height="50px" width="50px">
+    <img  *ngIf="perso.cote < 3500 && perso.cote >=3000" src="https://vignette.wikia.nocookie.net/overwatch/images/3/3f/Competitive_Diamond_Icon.png/revision/latest?cb=20161122023818" alt=""   height="50px" width="50px">
+    <img  *ngIf="perso.cote < 4000 && perso.cote >=3500" src="https://vignette.wikia.nocookie.net/overwatch/images/5/50/Competitive_Master_Icon.png/revision/latest?cb=20161122023832" alt=""   height="50px" width="50px">
+    <img  *ngIf="perso.cote < 4500 && perso.cote >=4000" src="https://vignette.wikia.nocookie.net/overwatch/images/c/cc/Competitive_Grandmaster_Icon.png/revision/latest?cb=20161122023845" alt=""   height="50px" width="50px">
+    {{perso.cote}}
+  </div>
+</div>
+<div class="float-left text-center">
+    <img (click)="change('youtube')" *ngIf="perso.youtubeLink"  src="https://cdn1.iconfinder.com/data/icons/logotypes/32/youtube-256.png" height="50px" width="50px">
+    <img (click)="change('twitch')"  *ngIf="perso.twitchLink" src="https://maxcdn.icons8.com/Share/icon/Logos//twitch1600.png" height="50px" width="50px">
+</div>
+<div class="text-center" style="margin-left:80px;">
+  <img *ngIf="perso.roles.includes('tank')" src="http://www.lastpick.net/assets/classes/Tank.png" height="50px" width="50px">
+  <img *ngIf="perso.roles.includes('attack')" src="http://www.lastpick.net/assets/classes/Attack.png" height="50px" width="50px">
+  <img *ngIf="perso.roles.includes('support')" src="http://owinfinity.com/wp-content/themes/overwatch-theme/assets/images/icons/skill-common/flip-support-large.png" height="50px" width="50px">
+  <img *ngIf="perso.roles.includes('defense')" src="http://www.lastpick.net/assets/classes/Defense.png" height="50px" width="50px">
+</div>
+<div>
+  <iframe *ngIf="perso.youtubeLink && youtube=='youtube'" width="100%" height="315" [src]="perso.youtubeLink | safe" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <iframe *ngIf="perso.twitchLink && youtube=='twitch'" [src]="perso.twitchLink | safe" frameborder="0" allowfullscreen="true" scrolling="no" height="315" width="100%"></iframe>
+</div>
+</div>

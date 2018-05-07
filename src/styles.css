@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: BigNoodleTitling;
+    src: url("./assets/big_noodle_titling.ttf");
+}
+h1{
+    color: black;
+}
+body{
+    font-family: BigNoodleTitling;
+    font-size: 1.3em;
+    color: white;
+}
+.titleName{
+    font-size: 1.7em;
+}
+.logo{
+    background-image: url("./assets/logo-with.png");
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.test{
+    background-image: url("./assets/favicon.png");
+    height: 32px;
+    width: 32px;
+}
+.padding{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
